@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-import static java.lang.Double.parseDouble;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -28,8 +27,8 @@ public class Main {
         );
 
 
-        double number1 = Double.parseDouble(numbersStrs.get(0));
-        double number2 = Double.parseDouble(numbersStrs.get(1));
+        double number1 = Double.parseDouble((numbersStrs.get(0)));
+        double number2 = Double.parseDouble((numbersStrs.get(1)));
 
         double result = 0;
 
@@ -42,7 +41,7 @@ public class Main {
             result = number1 * number2;
         }
 
-        System.out.println("The result is " + result);//v2 - final code
+        System.out.println("The result is " + result);
 
     }
 
