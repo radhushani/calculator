@@ -14,7 +14,9 @@ public class OperationFactory {
             operation = new SubOperation();
         } else if (operator.equals("mul")) {
             operation = new MulOperation();
-        }
+        } else if (operator.equals("div")) {
+            operation = new DivOperation();
+        }// violation of Open Close Principle -> this is a known violation
         return operation;
     }
 }
