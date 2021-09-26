@@ -1,13 +1,14 @@
 package com.kelaniya.uni.v5;
 
 import com.kelaniya.uni.v5.input.Inputs;
-import com.kelaniya.uni.v5.operation.InvalidOpeartionException;
+import com.kelaniya.uni.v5.input.InvalidInputException;
+import com.kelaniya.uni.v5.operation.InvalidCalcOpeartionException;
 import com.kelaniya.uni.v5.operation.Operation;
 import com.kelaniya.uni.v5.operation.OperationFactory;
 import com.kelaniya.uni.v5.repository.NumberRepository;
+import com.kelaniya.uni.v5.repository.NumberRepositoryException;
 import com.kelaniya.uni.v5.ui.UI;
 
-import java.io.IOException;
 
 public class CalculatorApp {
     private final Inputs inputs;
@@ -22,19 +23,19 @@ public class CalculatorApp {
         this.ui = ui;
     }
 
-    public void execute() throws IOException {//will change this in the future
+    public void execute()  {
 
-        String operator = inputs.getOperator();
-        Double[] numbers = numberRepository.getNumbers();
-        Operation operation = operationFactory.getInstance(operator);
-        Double result = null;
-        try {
-            result = operation.execute(numbers);
-        } catch (InvalidOpeartionException e) {
-            ui.showMessage("Error occurred" + e.getMessage());
-            return;
+        try{
+            String operator = inputs.getOperator();
+            Double[] numbers = numberRepository.getNumbers();
+            Operation operation = operationFactory.getInstance(operator);
+            Double result = operation.execute(numbers);
+            ui.showMessage("The result is " + result);
+
+        } catch (InvalidCalcOpeartionException | InvalidInputException |NumberRepositoryException e) {
+            ui.showMessage("Error occurred! " + e.getMessage());
+
         }
-        ui.showMessage("The result is " + result);
 
     }
 }
