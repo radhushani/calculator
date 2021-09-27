@@ -31,7 +31,7 @@ public class AddOperationTest {
     public void should_add_negative_values(){
         AddOperation addOperation =new AddOperation();
         Double result = addOperation.execute(new Double[]{-1.0,-2.0});
-        assertThat(result, is(11.0));
+        assertThat(result, is(-3.0));
     }
 
 
